@@ -9,12 +9,12 @@
 <ion-content padding>
   <ion-item>
     <ion-label floating>Username</ion-label>
-    <ion-input type="text" value="" [ng-model]="username"></ion-input>
+    <ion-input type="text" value="" [(ngModel)]="username"></ion-input>
   </ion-item>
-  <button ion-button block color="secondary" round icon-left (click)="pressmebaby(username)">
+  <button ion-button block color="secondary" round icon-left (click)="pressmebaby()">
     <ion-icon name="aperture"></ion-icon>
     PRESS ME, BABY
   </button>
-  <div>{{ informacion.login }}</div>
+  <div>{{ informacion.name }}</div>
   <img [src]="informacion.avatar_url" alt="">
 </ion-content>

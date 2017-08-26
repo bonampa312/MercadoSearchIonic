@@ -8,12 +8,14 @@ import { GithubProvider } from '../../providers/github/github'
 export class HomePage {
 
   informacion:any = []
+  username:string = ""
+
   constructor(private _github: GithubProvider) {
 
   }
 
-  pressmebaby(username:string){
-    this._github.buscarUsuario(username).then(
+  pressmebaby(){
+    this._github.buscarUsuario(this.username).then(
       (data)=>{
         this.informacion = data
         console.log(this.informacion)

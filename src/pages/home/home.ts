@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { GithubProvider } from '../../providers/github/github'
 
 @Component({
   selector: 'page-home',
@@ -7,8 +7,17 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  informacion:any = []
+  constructor(private _github: GithubProvider) {
 
   }
 
+  pressmebaby(username:string){
+    this._github.buscarUsuario(username).then(
+      (data)=>{
+        this.informacion = data
+        console.log(this.informacion)
+      }
+    )
+  }
 }

@@ -7,7 +7,7 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { GithubProvider } from '../providers/github/github';
+import { MercadolibreProvider } from '../providers/mercadolibre/mercadoapi';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { GithubProvider } from '../providers/github/github';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GithubProvider
+    MercadolibreProvider
   ]
 })
 export class AppModule {}

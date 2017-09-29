@@ -1,20 +1,35 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Dojo ionic :D
+      MercadoSearch Bonampa312
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding text-center>
+  <div text-center>
+    <ion-img style="width:70px; height:70px; background:transparent;" [src]="mercadolibreLogo"></ion-img>
+  </div>
   <ion-item>
-    <ion-label floating>Username</ion-label>
-    <ion-input type="text" value="" [(ngModel)]="username"></ion-input>
+    <ion-input type="text" placeholder="Search" [(ngModel)]="itemName"></ion-input>
   </ion-item>
-  <button ion-button block color="secondary" round icon-left (click)="pressmebaby()">
-    <ion-icon name="aperture"></ion-icon>
-    PRESS ME, BABY
+  <button ion-button style="background-color:#f7e100; color:#333;" round (click)="searchItems()">
+    Go for it
   </button>
-  <div>{{ informacion.name }}</div>
-  <img [src]="informacion.avatar_url" alt="">
+  <ion-list>
+    <div style="margin-top:20px;" ion-item *ngFor="let item of items">
+      <a>{{item.title}}</a>
+            <img style="float:left; margin:10px;" src={{item.thumbnail}}/>
+            <div >
+              <div>Price: {{item.price}} {{item.currency_id}}</div>
+              <div>Sold quantity: {{item.sold_quantity}}</div>
+              <a href={{item.permalink}}>View in Mercadolibre</a>
+            </div>
+    </div>
+  </ion-list>
+  <ion-fab right bottom *ngIf="listScroll">
+    <button ion-fab mini style="background-color:#f7e100" (click)="goTop()">
+      <ion-icon name="arrow-dropup"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

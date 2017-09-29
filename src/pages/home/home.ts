@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { GithubProvider } from '../../providers/github/github'
+import { Component, ViewChild } from '@angular/core';
+import { MercadolibreProvider } from '../../providers/mercadolibre/mercadoapi'
+import { Content } from 'ionic-angular'
 
 @Component({
   selector: 'page-home',
@@ -7,18 +8,26 @@ import { GithubProvider } from '../../providers/github/github'
 })
 export class HomePage {
 
-  informacion:any = []
-  username:string = ""
+  @ViewChild(Content) content: Content
+  items:any = []
+  mercadolibreLogo = "../../../img/mercadolibre.png"
+  itemName:string = ""
+  listScroll = false
 
-  constructor(private _github: GithubProvider) {
+  constructor(private _mercadolapi: MercadolibreProvider) {
 
   }
 
-  pressmebaby(){
-    this._github.buscarUsuario(this.username).then(
+  goTop(){
+    this.content.scrollToTop()
+  }
+
+  searchItems(){
+    this._mercadolapi.searchItems(this.itemName).then(
       (data)=>{
-        this.informacion = data
-        console.log(this.informacion)
+        this.listScroll = true
+        this.items = data
+        console.log(this.items)
       }
     )
   }

@@ -10,7 +10,7 @@ export class HomePage {
 
   @ViewChild(Content) content: Content
   items:any = []
-  mercadolibreLogo = "../../../img/mercadolibre.png"
+  mercadolibreLogo = "../../assets/imgs/mercado-libre.png"
   itemName:string = ""
   listScroll = false
 
